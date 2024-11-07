@@ -61,7 +61,7 @@ void loadData(const string& fileName, map<string, array<list<Dog>, 3>>& invetory
 void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
 
 }
-
+ 
 // Function to display the current state of the inventory
 void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int period) {
 
