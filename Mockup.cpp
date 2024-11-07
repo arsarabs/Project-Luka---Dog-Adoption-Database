@@ -25,10 +25,29 @@ int main() {
     };
 
     // Display the inventory for period 1
-    displayInventory(dogInventory, 1);
+    display_inventory(dogInventory, 1);
 	return 0;
 }
 
 void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int period) {
+    cout << "======== Inventory Status at Time Period " << period <<  "====" << endl;
 
+    for (const auto& breedEntry : inventory) {
+        const string& dogBreed = breedEntry.first;
+        const array<list<Dog>, 3>& lists = breedEntry.second;
+
+        cout << "Breed: " << dogBreed << endl;
+
+        // Display Available Dogs
+        cout << "Available Dogs:" << endl;
+
+        // Display Adopted Dogs
+        cout << "Adopted Dogs:" << endl;
+
+        // Display Reserved Dogs
+        cout << "Reserved Dogs:" << endl;
+
+        // Separator between breeds
+        cout << "----------------------------------------" << endl;
+    }
 }
