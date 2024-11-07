@@ -75,13 +75,18 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
 
 
     //Simulate returns
-
+     // Randomly decide if a dog is returned
+     // If returned, move dog from Adopted list back to Available list
 
 
    //Simulate reservations
+    // Randomly decide if a dog is reserved
+    // If reserved, move dog from Available list to Reserved list
 
 
     //Simulate reservations cancellations
+     // Randomly decide if a reservation is canceled
+     // If canceled, move dog from Reserved list back to Available list
 }
  
 // Function to display the current state of the inventory
