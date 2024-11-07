@@ -22,7 +22,7 @@ struct Dog {
 //Prototypes
  
 // Function to load data from external file
-void loadData(const string& fileName, map<string, array<list<Dog>, 3>>& invetory);
+void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invetory);
 
 //// Function to process events for a given time period
 void process_events(map<string, array<list<Dog>, 3>>& inventory, int period);
@@ -35,7 +35,7 @@ int main() {
 	map<string, array<list<Dog>, 3>> dogInventory;
 
 	// Load initial data from external file
-	loadData("dogs_data.txt", dogInventory);
+	load_data("dogs_data.txt", dogInventory);
 
     // Simulate 25 time periods
     for (int period = 0; period < 25; period++) {
@@ -53,8 +53,16 @@ int main() {
 }
 
 // Function to load data from external file
-void loadData(const string& fileName, map<string, array<list<Dog>, 3>>& invetory) {
+void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invetory) {
+    // Open the file
+    // If file does not open, print an error and exit
 
+    // Read data from file line by line
+        // For each line, extract dogID, breed, age, and status
+        // Create a Dog object with the extracted data
+        // Insert the Dog object into the appropriate list within the map based on breed and status
+
+    // Close the file
 }
 
 //// Function to process events for a given time period
