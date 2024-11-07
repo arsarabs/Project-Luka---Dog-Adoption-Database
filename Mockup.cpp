@@ -40,14 +40,23 @@ void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int pe
 
         // Display Available Dogs
         cout << "Available Dogs:" << endl;
+        for (const auto& dog : lists[0]) {
+            cout << "ID: " << dog.dogID << ", Breed: " << dog.dogBreed << ", Age: " << dog.dogAge << endl;
+        }
 
         // Display Adopted Dogs
         cout << "Adopted Dogs:" << endl;
+        for (const auto& dog : lists[1]) {
+            cout << "ID: " << dog.dogID << ", Breed: " << dog.dogBreed << ", Age: " << dog.dogAge << endl;
+        }
 
         // Display Reserved Dogs
         cout << "Reserved Dogs:" << endl;
+        for (const auto& dog : lists[2]) {
+            cout << "ID: " << dog.dogID << ", Breed: " << dog.dogBreed << ", Age: " << dog.dogAge << endl;
+        }
 
         // Separator between breeds
-        cout << "----------------------------------------" << endl;
+        cout << "==========================================================================" << endl;
     }
 }

@@ -67,10 +67,22 @@ void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invetor
 
 //// Function to process events for a given time period
 void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
+    //For each breed in map, we're going to do the following..............
 
+    //
 }
  
 // Function to display the current state of the inventory
 void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int period) {
+    // Print header with current time period
 
+  // Iterate through each breed in the map
+      // Print breed name
+      // Print Available Dogs
+          // Iterate through Available list and print dog details
+      // Print Adopted Dogs
+          // Iterate through Adopted list and print dog details
+      // Print Reserved Dogs
+          // Iterate through Reserved list and print dog details
+      // Print separator
 }
