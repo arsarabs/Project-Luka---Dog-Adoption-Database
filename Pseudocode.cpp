@@ -69,7 +69,19 @@ void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invetor
 void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
     //For each breed in map, we're going to do the following..............
 
-    //
+    //Simulate adoptions
+      // Randomly decide if a dog is adopted
+      // If adopted, move dog from Available list to Adopted list
+
+
+    //Simulate returns
+
+
+
+   //Simulate reservations
+
+
+    //Simulate reservations cancellations
 }
  
 // Function to display the current state of the inventory
