@@ -121,22 +121,60 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
                 lists[0].erase(it); //  // remove adopted dog to appropriate list
             }
         }
-    }
-
 
     //Simulate returns
-     // Randomly decide if a dog is returned
-     // If returned, move dog from Adopted list back to Available list
+    // Randomly decide if a dog is returned
+    // If returned, move dog from Adopted list back to Available list
+        if (!lists[0].empty()) { 
+            int event = eventDist(generate); 
+            if (event == 1) {  
+                //adpot a dog
+                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1); 
+                int adoptIndex = adoptDist(generate); 
+                auto it = lists[0].begin();
+                advance(it, adoptIndex); 
+                cout << "Adopted dog " << it->dogID << " from " << breed << "breed" << endl;
+                lists[1].push_back(*it); 
+                lists[0].erase(it); 
+            }
+        }
 
 
-   //Simulate reservations
-    // Randomly decide if a dog is reserved
-    // If reserved, move dog from Available list to Reserved list
-
+  //Simulate reservations
+   // Randomly decide if a dog is reserved
+   // If reserved, move dog from Available list to Reserved list
+        if (!lists[0].empty()) {
+            int event = eventDist(generate);
+            if (event == 1) {
+                //adpot a dog
+                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1);
+                int adoptIndex = adoptDist(generate);
+                auto it = lists[0].begin();
+                advance(it, adoptIndex);
+                cout << "Adopted dog " << it->dogID << " from " << breed << "breed" << endl;
+                lists[1].push_back(*it);
+                lists[0].erase(it);
+            }
+        }
 
     //Simulate reservations cancellations
-     // Randomly decide if a reservation is canceled
-     // If canceled, move dog from Reserved list back to Available list
+    // Randomly decide if a reservation is canceled
+    // If canceled, move dog from Reserved list back to Available list
+        if (!lists[0].empty()) {
+            int event = eventDist(generate);
+            if (event == 1) {
+                //adpot a dog
+                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1);
+                int adoptIndex = adoptDist(generate);
+                auto it = lists[0].begin();
+                advance(it, adoptIndex);
+                cout << "Adopted dog " << it->dogID << " from " << breed << "breed" << endl;
+                lists[1].push_back(*it);
+                lists[0].erase(it);
+            }
+        }
+    }
+
 }
  
 // Function to display the current state of the inventory
