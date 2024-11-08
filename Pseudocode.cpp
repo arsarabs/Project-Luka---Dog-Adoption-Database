@@ -22,7 +22,7 @@ struct Dog {
 //Prototypes
  
 // Function to load data from external file
-void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invetory);
+void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& inventory);
 
 //// Function to process events for a given time period
 void process_events(map<string, array<list<Dog>, 3>>& inventory, int period);
@@ -53,16 +53,43 @@ int main() {
 }
 
 // Function to load data from external file
-void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invetory) {
+void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& inventory) {
+
+    string dogID, breed, status;
+    int age;
     // Open the file
     // If file does not open, print an error and exit
+    ifstream file(fileName);
+    if (!file.is_open()) {
+        cout << "Unable to open file!" << endl;
+        exit(1);
+    }
 
     // Read data from file line by line
         // For each line, extract dogID, breed, age, and status
         // Create a Dog object with the extracted data
         // Insert the Dog object into the appropriate list within the map based on breed and status
 
+    while (file >> dogID >> breed >> age >> status) {
+        Dog dog = { dogID, breed, age };
+
+        //here, i'm going to insert a dog object to the appropriate list based on its status
+        if (status == "Available") {
+            inventory[breed][0].push_back(dog); //using pushback
+        }
+        else if (status == "Available") {
+            inventory[breed][0].push_back(dog); //using pushback
+        }
+        else if (status == "Available") {
+            inventory[breed][0].push_back(dog); //using pushback
+        }
+        else if (status == "Available") {
+            inventory[breed][0].push_back(dog); //using pushback
+        }
+    }
+
     // Close the file
+    file.close();
 }
 
 //// Function to process events for a given time period
