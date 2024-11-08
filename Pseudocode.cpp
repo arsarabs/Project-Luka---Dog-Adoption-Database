@@ -100,6 +100,10 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
       // Randomly decide if a dog is adopted
       // If adopted, move dog from Available list to Adopted list
 
+    for (auto& [breed, lists] : inventory) {
+
+    }
+
 
     //Simulate returns
      // Randomly decide if a dog is returned
