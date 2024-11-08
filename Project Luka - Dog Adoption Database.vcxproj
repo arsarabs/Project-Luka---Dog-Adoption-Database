@@ -127,8 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mockup.cpp" />
     <ClCompile Include="Pseudocode.cpp" />
+    <ClCompile Include="test_display_inventory.cpp" />
+    <ClCompile Include="test_load_data.cpp" />
+    <ClCompile Include="test_process_events.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Dog.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,22 @@
+## Unit Testing Strategy for Project Luka
+
+### load_data Function:
+Objective: Verify data is loaded correctly from dogs_data.txt into the inventory.
+
+Test Cases:
+1. Load a valid file and verify dog data is categorized correctly.
+2. Load a non-existent file and check for error handling.
+
+
+---
+### process_events Function:
+Objective: Simulate events and verify movement of dogs between lists.
+1. Simulate adoption and verify movement from "Available" to "Adopted."
+2. Simulate reservation and verify movement from "Available" to "Reserved."
+3. Simulate reservation cancellation and verify movement from "Reserved" to "Available."
+
+---
+### process_events Function:
+Objective: Ensure the inventory displays correctly in all scenarios.
+1. Display with multiple breeds and dogs in all categories.
+2. Display when categories are empty.

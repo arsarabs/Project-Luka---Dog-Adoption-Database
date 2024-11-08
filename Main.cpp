@@ -1,4 +1,6 @@
-// Include necessary headers
+//DISCLAIMER!!!!! I ARCHIVED BOTH MOCKUP.CPP AND PSEUDOCODE.CPP IN ORDER TO CREATE MAIN!!
+//so if you see alot of copying and pasting, its due to the fact that the code was already written
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -9,47 +11,39 @@
 #include <algorithm>
 #include <random>
 #include <chrono>
+#include "Dog.hpp" // Include the Dog header file
 
 using namespace std;
 
-//Dog structure
-struct Dog {
-	string dogID;
-	string dogBreed;
-	int dogAge;
-};
 
-//Prototypes
- 
-// Function to load data from external file
+
+// Function Prototypes
 void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& inventory);
-
-//// Function to process events for a given time period
 void process_events(map<string, array<list<Dog>, 3>>& inventory, int period);
-
-// Function to display the current state of the inventory
 void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int period);
 
 int main() {
-	// Initialize dogInventory map
-	map<string, array<list<Dog>, 3>> dogInventory;
+    // Step 1: Initialize the dogInventory map
+    map<string, array<list<Dog>, 3>> dogInventory;
 
-	// Load initial data from external file
-	load_data("dogs_data.txt", dogInventory);
+    // Step 2: Load data from the external file
+    load_data("dogs_data.txt", dogInventory);
 
-    // Simulate 25 time periods
+    // Step 3: Simulate 25 time periods
     for (int period = 0; period < 25; period++) {
-        // Display inventory before processing events
+        // Display inventory before events
+        cout << "BEFORE Events (Period " << period << ") " << endl;
         display_inventory(dogInventory, period);
 
         // Process events for this period
         process_events(dogInventory, period);
 
-        // Display inventory after processing events
+        // Display inventory after events
+        cout << "AFTER Events (Period " << period << ") " << endl;
         display_inventory(dogInventory, period);
     }
 
-	return 0;
+    return 0;
 }
 
 // Function to load data from external file
@@ -100,7 +94,7 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
     uniform_int_distribution<int> eventDist(1, 4); // 1: Adopt, 2: Return, 3: Reserve, 4: Cancel Reservation
 
     //Simulate adoptions
-  
+
      // Loop through each breed and its associated lists in the inventory map
     for (auto& entry : inventory) {
         string breed = entry.first; // Extract the breed name (map key)
@@ -122,26 +116,26 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
             }
         }
 
-    //Simulate returns
-    // Randomly decide if a dog is returned
-    // If returned, move dog from Adopted list back to Available list
-        if (!lists[1].empty()) { 
-            int event = eventDist(generate); 
-            if (event == 2) {  
+        //Simulate returns
+        // Randomly decide if a dog is returned
+        // If returned, move dog from Adopted list back to Available list
+        if (!lists[1].empty()) {
+            int event = eventDist(generate);
+            if (event == 2) {
                 //adpot a dog
-                uniform_int_distribution<int> returnDist(0, lists[1].size() - 1); 
+                uniform_int_distribution<int> returnDist(0, lists[1].size() - 1);
                 int returnIndex = returnDist(generate);
                 auto it = lists[0].begin();
                 advance(it, returnIndex);
                 cout << "Returned dog " << it->dogID << " from " << breed << "breed" << endl;
-                lists[0].push_back(*it); 
-                lists[1].erase(it); 
+                lists[0].push_back(*it);
+                lists[1].erase(it);
             }
         }
 
-  //Simulate reservations
-   // Randomly decide if a dog is reserved
-   // If reserved, move dog from Available list to Reserved list
+        //Simulate reservations
+         // Randomly decide if a dog is reserved
+         // If reserved, move dog from Available list to Reserved list
         if (!lists[0].empty()) {
             int event = eventDist(generate);
             if (event == 3) {
@@ -156,9 +150,9 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
             }
         }
 
-    //Simulate reservations cancellations
-    // Randomly decide if a reservation is canceled
-    // If canceled, move dog from Reserved list back to Available list
+        //Simulate reservations cancellations
+        // Randomly decide if a reservation is canceled
+        // If canceled, move dog from Reserved list back to Available list
         if (!lists[2].empty()) {
             int event = eventDist(generate);
             if (event == 4) {
@@ -174,7 +168,7 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
         }
     }
 }
- 
+
 // Function to display the current state of the inventory
 void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int period) {
     cout << "======== Inventory Status at Time Period " << period << "====" << endl;
