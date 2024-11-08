@@ -77,14 +77,14 @@ void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invento
         if (status == "Available") {
             inventory[breed][0].push_back(dog); //using pushback
         }
-        else if (status == "Available") {
-            inventory[breed][0].push_back(dog); //using pushback
+        else if (status == "Adopted") {
+            inventory[breed][1].push_back(dog); //using pushback
         }
-        else if (status == "Available") {
-            inventory[breed][0].push_back(dog); //using pushback
+        else if (status == "Reserved") {
+            inventory[breed][2].push_back(dog); //using pushback
         }
-        else if (status == "Available") {
-            inventory[breed][0].push_back(dog); //using pushback
+        else {
+            cout << "ERROR: Unknown " << status << " for dog ID " << dogID << endl;
         }
     }
 
@@ -118,15 +118,33 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
  
 // Function to display the current state of the inventory
 void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int period) {
-    // Print header with current time period
+    cout << "======== Inventory Status at Time Period " << period << "====" << endl;
 
-  // Iterate through each breed in the map
-      // Print breed name
-      // Print Available Dogs
-          // Iterate through Available list and print dog details
-      // Print Adopted Dogs
-          // Iterate through Adopted list and print dog details
-      // Print Reserved Dogs
-          // Iterate through Reserved list and print dog details
-      // Print separator
+    for (const auto& breedEntry : inventory) {
+        const string& dogBreed = breedEntry.first;
+        const array<list<Dog>, 3>& lists = breedEntry.second;
+
+        cout << "Breed: " << dogBreed << endl;
+
+        // Display Available Dogs
+        cout << "Available Dogs:" << endl;
+        for (const auto& dog : lists[0]) {
+            cout << "ID: " << dog.dogID << ", Breed: " << dog.dogBreed << ", Age: " << dog.dogAge << endl;
+        }
+
+        // Display Adopted Dogs
+        cout << "Adopted Dogs:" << endl;
+        for (const auto& dog : lists[1]) {
+            cout << "ID: " << dog.dogID << ", Breed: " << dog.dogBreed << ", Age: " << dog.dogAge << endl;
+        }
+
+        // Display Reserved Dogs
+        cout << "Reserved Dogs:" << endl;
+        for (const auto& dog : lists[2]) {
+            cout << "ID: " << dog.dogID << ", Breed: " << dog.dogBreed << ", Age: " << dog.dogAge << endl;
+        }
+
+        // Separator between breeds
+        cout << "==========================================================================" << endl;
+    }
 }
