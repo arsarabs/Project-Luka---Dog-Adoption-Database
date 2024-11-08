@@ -94,14 +94,32 @@ void load_data(const string& fileName, map<string, array<list<Dog>, 3>>& invento
 
 //// Function to process events for a given time period
 void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
+    // Initialize random number generator
+    unsigned seed = static_cast<unsigned>(chrono::system_clock::now().time_since_epoch().count());
+    mt19937 generate(seed);
+    uniform_int_distribution<int> eventDist(1, 4); // 1: Adopt, 2: Return, 3: Reserve, 4: Cancel Reservation
+
     //For each breed in map, we're going to do the following..............
 
     //Simulate adoptions
       // Randomly decide if a dog is adopted
       // If adopted, move dog from Available list to Adopted list
 
-    for (auto& [breed, lists] : inventory) {
+    for (auto& entry : inventory) {
+        string breed = entry.first;
+        auto& lists = entry.second; // there we go
 
+        //check to see if dogs avaiable
+        if (!lists[0].empty()) {
+            int event = eventDist(generate);
+            if (event == 1) {
+                //adpot a dog
+                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1);
+                int adoptIndex = adoptDist(generate);
+                auto
+
+            }
+        }
     }
 
 
