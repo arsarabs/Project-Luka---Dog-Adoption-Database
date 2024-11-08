@@ -139,7 +139,6 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
             }
         }
 
-
   //Simulate reservations
    // Randomly decide if a dog is reserved
    // If reserved, move dog from Available list to Reserved list
@@ -174,7 +173,6 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
             }
         }
     }
-
 }
  
 // Function to display the current state of the inventory
