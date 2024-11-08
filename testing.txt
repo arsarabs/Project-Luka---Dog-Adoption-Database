@@ -11,8 +11,12 @@ Test Cases:
 ---
 ### process_events Function:
 Objective: Simulate events and verify movement of dogs between lists.
-
+1. Simulate adoption and verify movement from "Available" to "Adopted."
+2. Simulate reservation and verify movement from "Available" to "Reserved."
+3. Simulate reservation cancellation and verify movement from "Reserved" to "Available."
 
 ---
 ### process_events Function:
 Objective: Ensure the inventory displays correctly in all scenarios.
+1. Display with multiple breeds and dogs in all categories.
+2. Display when categories are empty.
