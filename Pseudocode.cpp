@@ -125,17 +125,17 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
     //Simulate returns
     // Randomly decide if a dog is returned
     // If returned, move dog from Adopted list back to Available list
-        if (!lists[0].empty()) { 
+        if (!lists[1].empty()) { 
             int event = eventDist(generate); 
-            if (event == 1) {  
+            if (event == 2) {  
                 //adpot a dog
-                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1); 
-                int adoptIndex = adoptDist(generate); 
+                uniform_int_distribution<int> returnDist(0, lists[1].size() - 1); 
+                int returnIndex = returnDist(generate);
                 auto it = lists[0].begin();
-                advance(it, adoptIndex); 
-                cout << "Adopted dog " << it->dogID << " from " << breed << "breed" << endl;
-                lists[1].push_back(*it); 
-                lists[0].erase(it); 
+                advance(it, returnIndex);
+                cout << "Returned dog " << it->dogID << " from " << breed << "breed" << endl;
+                lists[0].push_back(*it); 
+                lists[1].erase(it); 
             }
         }
 
@@ -145,14 +145,14 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
    // If reserved, move dog from Available list to Reserved list
         if (!lists[0].empty()) {
             int event = eventDist(generate);
-            if (event == 1) {
+            if (event == 3) {
                 //adpot a dog
-                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1);
-                int adoptIndex = adoptDist(generate);
+                uniform_int_distribution<int> reserveDist(0, lists[0].size() - 1);
+                int reserveIndex = reserveDist(generate);
                 auto it = lists[0].begin();
-                advance(it, adoptIndex);
-                cout << "Adopted dog " << it->dogID << " from " << breed << "breed" << endl;
-                lists[1].push_back(*it);
+                advance(it, reserveIndex);
+                cout << "Reserved dog " << it->dogID << " from " << breed << "breed" << endl;
+                lists[2].push_back(*it);
                 lists[0].erase(it);
             }
         }
@@ -160,17 +160,17 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
     //Simulate reservations cancellations
     // Randomly decide if a reservation is canceled
     // If canceled, move dog from Reserved list back to Available list
-        if (!lists[0].empty()) {
+        if (!lists[2].empty()) {
             int event = eventDist(generate);
-            if (event == 1) {
+            if (event == 4) {
                 //adpot a dog
-                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1);
+                uniform_int_distribution<int> adoptDist(0, lists[2].size() - 1);
                 int adoptIndex = adoptDist(generate);
-                auto it = lists[0].begin();
+                auto it = lists[2].begin();
                 advance(it, adoptIndex);
                 cout << "Adopted dog " << it->dogID << " from " << breed << "breed" << endl;
-                lists[1].push_back(*it);
-                lists[0].erase(it);
+                lists[0].push_back(*it);
+                lists[2].erase(it);
             }
         }
     }
