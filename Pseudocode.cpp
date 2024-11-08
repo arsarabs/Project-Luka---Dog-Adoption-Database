@@ -99,25 +99,26 @@ void process_events(map<string, array<list<Dog>, 3>>& inventory, int period) {
     mt19937 generate(seed);
     uniform_int_distribution<int> eventDist(1, 4); // 1: Adopt, 2: Return, 3: Reserve, 4: Cancel Reservation
 
-    //For each breed in map, we're going to do the following..............
-
     //Simulate adoptions
-      // Randomly decide if a dog is adopted
-      // If adopted, move dog from Available list to Adopted list
-
+  
+     // Loop through each breed and its associated lists in the inventory map
     for (auto& entry : inventory) {
-        string breed = entry.first;
-        auto& lists = entry.second; // there we go
+        string breed = entry.first; // Extract the breed name (map key)
+        auto& lists = entry.second;  // Extract the array of lists for this breed (map value)
 
         //check to see if dogs avaiable
-        if (!lists[0].empty()) {
-            int event = eventDist(generate);
-            if (event == 1) {
+        //here's my reasoning for the code below
+        if (!lists[0].empty()) { // Check if there are dogs available for adoption in the first list
+            int event = eventDist(generate); // Randomly decide an event type
+            if (event == 1) {  // If the event is an adoption (event == 1)
                 //adpot a dog
-                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1);
-                int adoptIndex = adoptDist(generate);
-                auto
-
+                uniform_int_distribution<int> adoptDist(0, lists[0].size() - 1); // Distribution to randomly select a dog from the available list
+                int adoptIndex = adoptDist(generate); // Get a random index for the dog to adopt
+                auto it = lists[0].begin(); // Iterator pointing to the beginning of the available list
+                advance(it, adoptIndex); // advance the iterator to randomly selected dog
+                cout << "Adopted dog " << it->dogID << " from " << breed << "breed" << endl;
+                lists[1].push_back(*it); // move adopted dog to appropriate list
+                lists[0].erase(it); //  // remove adopted dog to appropriate list
             }
         }
     }
