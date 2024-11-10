@@ -1,5 +1,4 @@
-//DISCLAIMER!!!!! I ARCHIVED BOTH MOCKUP.CPP AND PSEUDOCODE.CPP IN ORDER TO CREATE MAIN!!
-//so if you see alot of copying and pasting, its due to the fact that the code was already written
+
 
 #include <iostream>
 #include <fstream>
@@ -176,8 +175,8 @@ void display_inventory(const map<string, array<list<Dog>, 3>>& inventory, int pe
     for (const auto& breedEntry : inventory) {
         const string& dogBreed = breedEntry.first;
         const array<list<Dog>, 3>& lists = breedEntry.second;
-
-        cout << "Breed: " << dogBreed << endl;
+         
+         cout << "Breed: " << dogBreed << endl;
 
         // Display Available Dogs
         cout << "Available Dogs:" << endl;
