@@ -1,0 +1,86 @@
+### Bug ID: BUG-001
+**Description:** Reservation cancellations were not updating the Available list correctly.
+**Steps to Reproduce:** 
+  1. Reserve a dog.
+  2. Cancel the reservation.
+  3. Observe that the dog does not move back to Available.
+**Solution:** Fixed the iterator in the cancellation function to correctly reference the Reserved list.
+
+
+### Bug ID: BUG-002
+**Description:** Memory leaks detected in the event processing function.
+**Steps to Reproduce:**
+  1. Run the simulation for extended periods.
+  2. Monitor memory usage.
+  3. Notice gradual increase in memory consumption.
+**Solution:** Implemented proper memory management by ensuring all dynamically allocated memory is freed.
+
+### Bug ID: BUG-003
+**Description:** Dogs are not being removed from the Reserved list upon adoption.
+**Steps to Reproduce:**
+  1. Reserve a dog.
+  2. Proceed to adopt the reserved dog.
+  3. Observe that the dog remains in the Reserved list.
+**Solution:** Updated the adoption function to ensure dogs are moved from Reserved to Adopted correctly.
+
+
+### Bug ID: BUG-004
+**Description:** Incorrect breed displayed in the inventory after loading data.
+**Steps to Reproduce:**
+  1. Load data from `dogs_data.txt` containing multiple breeds.
+  2. Display inventory.
+  3. Notice that breeds are mismatched.
+**Solution:** Corrected the data parsing logic to accurately assign breeds to each dog.
+
+
+### Bug ID: BUG-005
+**Description:** Simulation crashes when the Reserved list is empty.
+**Steps to Reproduce:**
+  1. Ensure no dogs are in the Reserved list.
+  2. Trigger a reservation cancellation event.
+  3. Observe program crash.
+**Solution:** Added a check to ensure the Reserved list is not empty before attempting to cancel a reservation.
+
+
+### Bug ID: BUG-006
+**Description:** Duplicate dog entries appearing in the Adopted list.
+**Steps to Reproduce:**
+  1. Adopt a dog.
+  2. Observe that the same dog appears twice in the Adopted list.
+**Solution:** Ensured that dogs are removed from the Available list before being added to Adopted to prevent duplication.
+
+
+### Bug ID: BUG-007
+**Description:** Reservation count does not decrement correctly after cancellations.
+**Steps to Reproduce:**
+  1. Reserve multiple dogs.
+  2. Cancel some reservations.
+  3. Check the reservation counts.
+**Solution:** Fixed the reservation count logic to accurately reflect cancellations.
+
+
+### Bug ID: BUG-008
+**Description:** Age of dogs not displaying correctly in the inventory.
+**Steps to Reproduce:**
+  1. Load data with varying dog ages.
+  2. Display inventory.
+  3. Notice incorrect ages shown.
+**Solution:** Corrected the data loading function to properly parse and assign dog ages.
+
+
+### Bug ID: BUG-009
+**Description:** Simulation does not terminate after the specified number of time periods.
+**Steps to Reproduce:**
+  1. Set simulation to run for 25 periods.
+  2. Observe that it continues indefinitely.
+**Solution:** Added a termination condition to end the simulation after completing the specified number of periods.
+
+
+### Bug ID: BUG-010
+**Description:** Inconsistent formatting in the inventory display output.
+**Steps to Reproduce:**
+  1. Run the simulation.
+  2. Observe the inventory display.
+  3. Notice inconsistent spacing and separators.
+**Solution:** Standardized the output formatting to ensure consistency across all inventory displays.
+
